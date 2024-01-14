@@ -8,8 +8,8 @@ import java.io.Serial;
 import java.io.Serializable;
 import java.util.HashMap;
 
-import static com.eggcampus.dada.backend.util.result.AliErrorCode.SUCCESS;
-import static com.eggcampus.dada.backend.util.result.AliErrorCode.USER_ERROR_A0400;
+import static com.eggcampus.util.result.AliErrorCode.SUCCESS;
+import static com.eggcampus.util.result.AliErrorCode.USER_ERROR_A0400;
 
 /**
  * 返回信息的包装类

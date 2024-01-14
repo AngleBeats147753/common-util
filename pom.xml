@@ -7,11 +7,44 @@
     <groupId>com.eggcampus.util</groupId>
     <artifactId>common-util</artifactId>
     <version>0.1-SNAPSHOT</version>
+    <name>common-util</name>
+    <description>common-util</description>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <spring.boot.version>2.7.14</spring.boot.version>
     </properties>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.30</version>
+            <scope>provided</scope>
+            <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-validation</artifactId>
+            <version>${spring.boot.version}</version>
+            <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+            <version>2.16.1</version>
+        </dependency>
+    </dependencies>
+
+    <distributionManagement>
+        <repository>
+            <id>eggcampus-backend-public-server-default-maven</id>
+            <name>default-maven</name>
+            <url>https://eggcampus-maven.pkg.coding.net/repository/backend-public-server/default-maven/</url>
+        </repository>
+    </distributionManagement>
 </project>
