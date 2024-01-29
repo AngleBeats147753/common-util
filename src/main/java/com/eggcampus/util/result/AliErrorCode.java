@@ -1,6 +1,11 @@
 package com.eggcampus.util.result;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
+import lombok.Getter;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * 阿里巴巴Java开发手册-崇山版-2020.08.03 错误码
@@ -15,8 +20,8 @@ import com.fasterxml.jackson.annotation.JsonValue;
  * 6. 大的错误类间的步长间距预留100
  * <p/>
  */
+@Getter
 public enum AliErrorCode {
-
     /**
      * 成功
      */
@@ -274,18 +279,28 @@ public enum AliErrorCode {
 
     private final String description;
 
-    private AliErrorCode(String code, String description) {
+    AliErrorCode(String code, String description) {
         this.code = code;
         this.description = description;
     }
 
-    public String getCode() {
-        return code;
+    private static final Map<String, AliErrorCode> MAP = new HashMap<>();
+
+    static {
+        for (AliErrorCode type : AliErrorCode.values()) {
+            MAP.put(type.code, type);
+        }
     }
 
-    public String getDescription() {
-        return description;
+    @JsonCreator
+    public static AliErrorCode createCode(String code) {
+        AliErrorCode targetType = MAP.get(code);
+        if (targetType == null) {
+            throw new IllegalArgumentException("AliErrorCode not found. code=" + code);
+        }
+        return MAP.get(code);
     }
+
 }
 
 
