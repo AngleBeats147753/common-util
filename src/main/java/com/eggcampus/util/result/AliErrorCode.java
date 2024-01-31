@@ -193,6 +193,8 @@ public enum AliErrorCode {
      */
     SYSTEM_ERROR_B0100("B0100", "系统执行超时"),
     SYSTEM_ERROR_B0101("B0101", "系统订单处理超时"),
+    SYSTEM_ERROR_B0102("B0102", "系统重试次数超过上限"),
+
     /**
      * 二级宏观错误码
      */

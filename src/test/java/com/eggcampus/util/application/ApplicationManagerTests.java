@@ -1,6 +1,9 @@
 package com.eggcampus.util.application;
 
 import cn.hutool.json.JSONObject;
+import com.eggcampus.util.spring.application.ApplicationAutoConfiguration;
+import com.eggcampus.util.spring.application.ApplicationDTO;
+import com.eggcampus.util.spring.application.ApplicationManager;
 import com.eggcampus.util.test.TestUtil;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;

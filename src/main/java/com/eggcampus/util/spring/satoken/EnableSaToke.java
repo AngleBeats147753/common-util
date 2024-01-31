@@ -1,4 +1,4 @@
-package com.eggcampus.util.application;
+package com.eggcampus.util.spring.satoken;
 
 import org.springframework.context.annotation.Import;
 
@@ -10,6 +10,6 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.TYPE})
 @Documented
-@Import({ApplicationAutoConfiguration.class})
-public @interface EnableApplicationManager {
+@Import({SaTokenExceptionHandlerController.class})
+public @interface EnableSaToke {
 }

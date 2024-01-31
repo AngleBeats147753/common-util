@@ -1,4 +1,4 @@
-package com.eggcampus.util.mybatis.enums;
+package com.eggcampus.util.spring.mybatisplus.enums;
 
 import com.baomidou.mybatisplus.annotation.IEnum;
 import com.fasterxml.jackson.annotation.JsonValue;

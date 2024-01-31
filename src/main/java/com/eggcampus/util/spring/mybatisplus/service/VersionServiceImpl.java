@@ -1,11 +1,11 @@
-package com.eggcampus.util.mybatis.service;
+package com.eggcampus.util.spring.mybatisplus.service;
 
 import cn.hutool.core.util.BooleanUtil;
 import cn.hutool.core.util.RandomUtil;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.eggcampus.util.mybatis.exception.OptimisticLockException;
-import com.eggcampus.util.mybatis.exception.UpdateFailureException;
+import com.eggcampus.util.spring.mybatisplus.exception.OptimisticLockException;
+import com.eggcampus.util.spring.mybatisplus.exception.UpdateFailureException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Value;

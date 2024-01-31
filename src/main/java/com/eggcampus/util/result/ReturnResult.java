@@ -1,15 +1,12 @@
 package com.eggcampus.util.result;
 
 import lombok.Data;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
 
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.HashMap;
 
 import static com.eggcampus.util.result.AliErrorCode.SUCCESS;
-import static com.eggcampus.util.result.AliErrorCode.USER_ERROR_A0400;
 
 /**
  * 返回信息的包装类
@@ -53,25 +50,6 @@ public class ReturnResult implements Serializable {
 
     public static ReturnResult getFailureReturn(AliErrorCode status, String message, String errorMessage) {
         return new ReturnResult(status, message, EMPTY_DATA, errorMessage);
-    }
-
-    /**
-     * 用于包装参数校验出错时的错误信息
-     *
-     * @param bindingResult 校验结果
-     * @return 装有错误信息的Return
-     */
-    public static ReturnResult getFailureReturn(BindingResult bindingResult) {
-        StringBuilder stringBuilder = new StringBuilder();
-        bindingResult.getAllErrors().forEach(o -> {
-            FieldError error = (FieldError) o;
-            if (error.isBindingFailure()) {
-                stringBuilder.append(String.format("无法将%s作为%s的值", error.getRejectedValue(), error.getField())).append("\n");
-            } else {
-                stringBuilder.append(error.getField()).append(" : ").append(error.getDefaultMessage()).append("\n");
-            }
-        });
-        return new ReturnResult(USER_ERROR_A0400, stringBuilder.toString(), EMPTY_DATA, "");
     }
 
     /**

@@ -1,4 +1,4 @@
-package com.eggcampus.util.mybatis.enums;
+package com.eggcampus.util.spring.mybatisplus.enums;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.convert.converter.Converter;

@@ -19,6 +19,7 @@
         <lombok.version>1.18.30</lombok.version>
         <hutool.version>5.8.25</hutool.version>
         <mybatis.plus.version>3.5.3.1</mybatis.plus.version>
+        <satoken.version>1.37.0</satoken.version>
     </properties>
 
     <dependencyManagement>
@@ -70,6 +71,13 @@
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-boot-starter</artifactId>
             <version>${mybatis.plus.version}</version>
+            <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>cn.dev33</groupId>
+            <artifactId>sa-token-spring-boot-starter</artifactId>
+            <version>${satoken.version}</version>
             <optional>true</optional>
         </dependency>
     </dependencies>

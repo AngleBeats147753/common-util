@@ -1,4 +1,4 @@
-package com.eggcampus.util.application;
+package com.eggcampus.util.spring.application;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
