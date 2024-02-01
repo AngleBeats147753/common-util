@@ -45,7 +45,7 @@ public class ReturnResult implements Serializable {
      * @return 装有错误信息的Return
      */
     public static ReturnResult getFailureReturn(AliErrorCode status, String message) {
-        return new ReturnResult(status, message, EMPTY_DATA, "");
+        return new ReturnResult(status, message, EMPTY_DATA, message);
     }
 
     public static ReturnResult getFailureReturn(AliErrorCode status, String message, String errorMessage) {

@@ -94,7 +94,7 @@ fabric.properties
 *.class
 
 # Log file
-*.log
+*.controllerLog
 
 # BlueJ files
 *.ctxt
