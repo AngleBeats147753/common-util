@@ -1,6 +1,6 @@
 package com.eggcampus.util.exception.result;
 
-import com.eggcampus.util.exception.EggcampusException;
+import com.eggcampus.util.exception.EggCampusException;
 import com.eggcampus.util.result.AliErrorCode;
 import lombok.Getter;
 
@@ -10,7 +10,7 @@ import lombok.Getter;
  * @author 黄磊
  */
 @Getter
-public class ReturnResultException extends EggcampusException {
+public class ReturnResultException extends EggCampusException {
     private final AliErrorCode code;
     private final String userTip;
     private final String errorMessage;
