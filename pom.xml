@@ -6,7 +6,7 @@
 
     <groupId>com.eggcampus.util</groupId>
     <artifactId>common-util</artifactId>
-    <version>0.1</version>
+    <version>0.2-SNAPSHOT</version>
     <name>common-util</name>
     <description>common-util</description>
 
