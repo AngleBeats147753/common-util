@@ -7,7 +7,7 @@
     <groupId>com.eggcampus.util</groupId>
     <artifactId>util</artifactId>
     <version>0.2.1-SNAPSHOT</version>
-    <name>util</name>
+    <name>util-base</name>
     <description>util</description>
 
     <properties>
