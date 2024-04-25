@@ -5,10 +5,10 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.eggcampus.util</groupId>
-    <artifactId>util</artifactId>
+    <artifactId>util-base</artifactId>
     <version>0.2.1-SNAPSHOT</version>
     <name>util-base</name>
-    <description>util</description>
+    <description>util-base</description>
 
     <properties>
         <java.version>17</java.version>
