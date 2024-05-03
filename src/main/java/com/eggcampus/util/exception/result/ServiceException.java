@@ -1,6 +1,7 @@
 package com.eggcampus.util.exception.result;
 
 import com.eggcampus.util.result.AliErrorCode;
+import com.eggcampus.util.result.ReturnResult;
 import lombok.Getter;
 
 /**
@@ -17,16 +18,23 @@ public class ServiceException extends ReturnResultException {
         super(code, userTip);
     }
 
-    public ServiceException(AliErrorCode code, String userTip, Exception exception) {
-        super(code, userTip, exception);
-    }
-
     public ServiceException(AliErrorCode code, String userTip, String errorMessage) {
         super(code, userTip, errorMessage);
     }
 
-    public ServiceException(AliErrorCode code, String userTip, String errorMessage, Exception exception) {
+    public ServiceException(AliErrorCode code, String userTip, Throwable exception) {
+        super(code, userTip, exception);
+    }
+
+    public ServiceException(AliErrorCode code, String userTip, String errorMessage, Throwable exception) {
         super(code, userTip, errorMessage, exception);
     }
 
+    public ServiceException(ReturnResult result) {
+        super(result);
+    }
+
+    public ServiceException(ReturnResult result, Throwable exception) {
+        super(result, exception);
+    }
 }

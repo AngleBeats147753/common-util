@@ -1,6 +1,7 @@
 package com.eggcampus.util.exception.result;
 
 import com.eggcampus.util.result.AliErrorCode;
+import com.eggcampus.util.result.ReturnResult;
 import lombok.Getter;
 
 /**
@@ -24,5 +25,13 @@ public class FeignException extends ReturnResultException {
 
     public FeignException(AliErrorCode code, String userTip, String errorMessage, Throwable exception) {
         super(code, userTip, errorMessage, exception);
+    }
+
+    public FeignException(ReturnResult result) {
+        super(result);
+    }
+
+    public FeignException(ReturnResult result, Throwable exception) {
+        super(result, exception);
     }
 }
