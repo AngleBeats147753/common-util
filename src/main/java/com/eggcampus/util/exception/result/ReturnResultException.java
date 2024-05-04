@@ -12,48 +12,48 @@ import lombok.Getter;
  */
 @Getter
 public class ReturnResultException extends EggCampusException {
-    private static final String ERROR_MESSAGE = "错误码<%s>，用户提示信息<%s>，错误提示信息<%s>";
+    private static final String ERROR_MESSAGE = "错误码<%s>，错误提示信息<%s>";
     private final AliErrorCode code;
     private final String userTip;
     private final String errorMessage;
 
     public ReturnResultException(AliErrorCode code, String userTip) {
-        super(ERROR_MESSAGE.formatted(code.getCode(), userTip, null));
+        super(ERROR_MESSAGE.formatted(code.getCode(), userTip));
         this.code = code;
         this.userTip = userTip;
-        this.errorMessage = null;
+        this.errorMessage = userTip;
     }
 
     public ReturnResultException(AliErrorCode code, String userTip, String errorMessage) {
-        super(errorMessage.formatted(code.getCode(), userTip, errorMessage));
+        super(ERROR_MESSAGE.formatted(code.getCode(), errorMessage));
         this.code = code;
         this.userTip = userTip;
         this.errorMessage = errorMessage;
     }
 
     public ReturnResultException(AliErrorCode code, String userTip, Throwable exception) {
-        super(ERROR_MESSAGE.formatted(code.getCode(), userTip, null), exception);
+        super(ERROR_MESSAGE.formatted(code.getCode(), userTip), exception);
         this.code = code;
         this.userTip = userTip;
-        this.errorMessage = null;
+        this.errorMessage = userTip;
     }
 
     public ReturnResultException(AliErrorCode code, String userTip, String errorMessage, Throwable exception) {
-        super(errorMessage.formatted(code.getCode(), userTip, errorMessage), exception);
+        super(ERROR_MESSAGE.formatted(code.getCode(), errorMessage), exception);
         this.code = code;
         this.userTip = userTip;
         this.errorMessage = errorMessage;
     }
 
     public ReturnResultException(ReturnResult result) {
-        super(ERROR_MESSAGE.formatted(result.getStatus(), result.getMessage(), result.getErrorMessage()));
+        super(ERROR_MESSAGE.formatted(result.getStatus(), result.getErrorMessage()));
         this.code = result.getStatus();
         this.userTip = result.getMessage();
         this.errorMessage = result.getErrorMessage();
     }
 
     public ReturnResultException(ReturnResult result, Throwable exception) {
-        super(ERROR_MESSAGE.formatted(result.getStatus(), result.getMessage(), result.getErrorMessage()), exception);
+        super(ERROR_MESSAGE.formatted(result.getStatus(), result.getErrorMessage()), exception);
         this.code = result.getStatus();
         this.userTip = result.getMessage();
         this.errorMessage = result.getErrorMessage();
@@ -63,4 +63,7 @@ public class ReturnResultException extends EggCampusException {
         return this.code.getCode();
     }
 
+    public ReturnResult getReturnResult() {
+        return ReturnResult.getFailureReturn(this.code, this.userTip, this.errorMessage);
+    }
 }
