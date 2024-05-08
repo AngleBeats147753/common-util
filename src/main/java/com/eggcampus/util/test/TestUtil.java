@@ -1,14 +1,13 @@
 package com.eggcampus.util.test;
 
+import cn.hutool.core.io.IoUtil;
+import cn.hutool.core.io.resource.ClassPathResource;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.db.sql.SqlExecutor;
 import cn.hutool.json.JSONArray;
 import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
 import org.assertj.core.api.Assertions;
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.util.StreamUtils;
-import org.springframework.util.StringUtils;
 
 import javax.sql.DataSource;
 import java.io.IOException;
@@ -34,7 +33,7 @@ public class TestUtil {
      * @throws IOException 读取文件异常
      */
     public static String readFile(Path path) throws IOException {
-        return StreamUtils.copyToString(new ClassPathResource(path.toString()).getInputStream(), StandardCharsets.UTF_8);
+        return IoUtil.read(new ClassPathResource(path.toString()).getStream(), StandardCharsets.UTF_8);
     }
 
     /**
@@ -49,7 +48,7 @@ public class TestUtil {
         try (Connection connection = dataSource.getConnection()) {
             Integer count = 0;
             for (String sql : sqls.split(";")) {
-                if (!StringUtils.hasText(sql)) {
+                if (StrUtil.isBlank(sql)) {
                     continue;
                 }
                 SqlExecutor.execute(connection, sql);
@@ -124,9 +123,9 @@ public class TestUtil {
      * @return JSON 对象
      * @throws IOException 读取文件异常
      */
-    public static Object getGt(Path caseDir, Class<?> beanClass) throws IOException {
+    public static <T> T getGt(Path caseDir, Class<T> beanClass) throws IOException {
         String content = TestUtil.readFile(caseDir.resolve("gt.json"));
-        Object gt = null;
+        T gt = null;
         if (StrUtil.isNotBlank(content)) {
             gt = JSONUtil.toBean(content, beanClass);
         }
@@ -141,9 +140,9 @@ public class TestUtil {
      * @return JSON 对象列表
      * @throws IOException 读取文件异常
      */
-    public static List<?> getGts(Path caseDir, Class<?> beanClass) throws IOException {
+    public static <T> List<T> getGts(Path caseDir, Class<T> beanClass) throws IOException {
         String content = TestUtil.readFile(caseDir.resolve("gt.json"));
-        List<?> gt = null;
+        List<T> gt = null;
         if (StrUtil.isNotBlank(content)) {
             gt = JSONUtil.parseArray(content)
                     .stream()
