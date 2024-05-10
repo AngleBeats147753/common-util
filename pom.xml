@@ -16,10 +16,11 @@
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-        <maven-source-plugin.version>3.2.1</maven-source-plugin.version>
         <lombok.version>1.18.30</lombok.version>
-        <hutool.version>5.8.25</hutool.version>
+        <hutool.version>5.8.27</hutool.version>
         <jackson.version.annotations>2.13.5</jackson.version.annotations>
+
+        <maven-source-plugin.version>3.2.1</maven-source-plugin.version>
     </properties>
 
     <dependencies>
