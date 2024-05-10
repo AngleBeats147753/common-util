@@ -71,6 +71,19 @@ public class TestUtil {
     }
 
     /**
+     * 初始化数据库表
+     *
+     * @param dataSource   数据源
+     * @param tableSqlPath 表结构 SQL 文件路径
+     * @throws SQLException SQL 执行异常
+     * @throws IOException  读取文件异常
+     */
+    public static synchronized void initTable(DataSource dataSource, Path tableSqlPath) throws SQLException, IOException {
+        String tables = readFile(tableSqlPath);
+        executeSql(dataSource, tables);
+    }
+
+    /**
      * 初始化测试数据
      *
      * @param caseDir    测试用例目录
@@ -116,7 +129,18 @@ public class TestUtil {
 
 
     /**
-     * 从指定路径读取 JSON 对象并转换为指定类型的对象返回
+     * 从指定路径读取 GT 对象并返回
+     *
+     * @param caseDir 测试用例目录
+     * @return JSON 对象
+     * @throws IOException 读取文件异常
+     */
+    public static JSONObject getGt(Path caseDir) throws IOException {
+        return readJsonObject(caseDir.resolve("gt.json"));
+    }
+
+    /**
+     * 从指定路径读取 GT 对象并转换为指定类型的对象返回
      *
      * @param caseDir   测试用例目录
      * @param beanClass 对象类型
@@ -124,16 +148,23 @@ public class TestUtil {
      * @throws IOException 读取文件异常
      */
     public static <T> T getGt(Path caseDir, Class<T> beanClass) throws IOException {
-        String content = TestUtil.readFile(caseDir.resolve("gt.json"));
-        T gt = null;
-        if (StrUtil.isNotBlank(content)) {
-            gt = JSONUtil.toBean(content, beanClass);
-        }
-        return gt;
+        JSONObject gt = getGt(caseDir);
+        return gt == null ? null : gt.toBean(beanClass);
     }
 
     /**
-     * 从指定路径读取 JSON 数组并转换为指定类型的对象列表返回
+     * 从指定路径读取 GT 数组并返回
+     *
+     * @param caseDir 测试用例目录
+     * @return JSON 数组
+     * @throws IOException 读取文件异常
+     */
+    public static JSONArray getGts(Path caseDir) throws IOException {
+        return readJsonArray(caseDir.resolve("gt.json"));
+    }
+
+    /**
+     * 从指定路径读取 GT 数组并转换为指定类型的对象列表返回
      *
      * @param caseDir   测试用例目录
      * @param beanClass 对象类型
@@ -141,15 +172,32 @@ public class TestUtil {
      * @throws IOException 读取文件异常
      */
     public static <T> List<T> getGts(Path caseDir, Class<T> beanClass) throws IOException {
-        String content = TestUtil.readFile(caseDir.resolve("gt.json"));
-        List<T> gt = null;
-        if (StrUtil.isNotBlank(content)) {
-            gt = JSONUtil.parseArray(content)
-                    .stream()
-                    .map(o -> JSONUtil.toBean(o.toString(), beanClass))
-                    .toList();
-        }
-        return gt;
+        JSONArray gts = getGts(caseDir);
+        return gts == null ? null : gts.toList(beanClass);
+    }
+
+    /**
+     * 从指定路径读取 JSON 对象并返回
+     *
+     * @param caseDir 测试用例目录
+     * @return JSON 对象
+     * @throws IOException 读取文件异常
+     */
+    public static JSONObject getInputParam(Path caseDir) throws IOException {
+        return readJsonObject(caseDir.resolve("input.json"));
+    }
+
+    /**
+     * 从指定路径读取 JSON 对象并转换为指定类型的对象返回
+     *
+     * @param caseDir   测试用例目录
+     * @param beanClass 对象类型
+     * @return JSON 对象
+     * @throws IOException 读取文件异常
+     */
+    public static <T> T getInputParam(Path caseDir, Class<T> beanClass) throws IOException {
+        JSONObject inputParam = getInputParam(caseDir);
+        return inputParam == null ? null : inputParam.toBean(beanClass);
     }
 
     /**
@@ -163,8 +211,17 @@ public class TestUtil {
         return readJsonArray(caseDir.resolve("input.json"));
     }
 
-    public static JSONObject getInputParam(Path caseDir) throws IOException {
-        return readJsonObject(caseDir.resolve("input.json"));
+    /**
+     * 从指定路径读取 JSON 数组并转换为指定类型的对象列表返回
+     *
+     * @param caseDir   测试用例目录
+     * @param beanClass 对象类型
+     * @return JSON 对象列表
+     * @throws IOException 读取文件异常
+     */
+    public static <T> List<T> getInputParams(Path caseDir, Class<T> beanClass) throws IOException {
+        JSONArray inputParams = getInputParams(caseDir);
+        return inputParams == null ? null : inputParams.toList(beanClass);
     }
 
     /**
