@@ -64,6 +64,6 @@ public class ReturnResultException extends EggCampusException {
     }
 
     public ReturnResult getReturnResult() {
-        return ReturnResult.getFailureReturn(this.code, this.userTip, this.errorMessage);
+        return ReturnResult.failure(this.code, this.userTip, this.errorMessage);
     }
 }

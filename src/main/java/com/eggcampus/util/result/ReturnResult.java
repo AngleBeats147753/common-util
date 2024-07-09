@@ -22,20 +22,20 @@ public class ReturnResult implements Serializable {
 
     private static final HashMap<String, Object> EMPTY_DATA = new HashMap<>(0);
 
-    public static ReturnResult getSuccessReturn(String message) {
+    public static ReturnResult success(String message) {
         return new ReturnResult(SUCCESS, message, EMPTY_DATA, "");
     }
 
-    public static ReturnResult getSuccessReturn(Object data) {
+    public static ReturnResult success(Object data) {
         return new ReturnResult(SUCCESS, "", data, "");
     }
 
-    public static ReturnResult getSuccessReturn(String message, Object data) {
+    public static ReturnResult success(String message, Object data) {
         return new ReturnResult(SUCCESS, message, data, "");
     }
 
-    public static ReturnResult getSuccessReturn(AliErrorCode status, String message, Object data) {
-        return new ReturnResult(SUCCESS, message, data, "");
+    public static ReturnResult success(AliErrorCode status, String message, Object data) {
+        return new ReturnResult(status, message, data, "");
     }
 
     /**
@@ -44,11 +44,11 @@ public class ReturnResult implements Serializable {
      * @param message 返回的错误信息（用户错误提示、错误排查时的提示）
      * @return 装有错误信息的Return
      */
-    public static ReturnResult getFailureReturn(AliErrorCode status, String message) {
+    public static ReturnResult failure(AliErrorCode status, String message) {
         return new ReturnResult(status, message, EMPTY_DATA, message);
     }
 
-    public static ReturnResult getFailureReturn(AliErrorCode status, String message, String errorMessage) {
+    public static ReturnResult failure(AliErrorCode status, String message, String errorMessage) {
         return new ReturnResult(status, message, EMPTY_DATA, errorMessage);
     }
 

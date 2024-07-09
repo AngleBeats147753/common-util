@@ -192,3 +192,4 @@ buildNumber.properties
 # End of https://www.toptal.com/developers/gitignore/api/jetbrains+all,intellij+all,java,maven
 common-util.iml
 rebel.xml
+util-base.iml
