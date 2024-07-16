@@ -6,7 +6,7 @@ import com.eggcampus.util.result.ReturnResult;
 import lombok.Getter;
 
 /**
- * 返回给客户端的异常，带有各种提示信息
+ * 用于封装方法的返回结果，当方法执行失败时，可以通过抛出此异常来传递失败的返回结果。
  *
  * @author 黄磊
  */

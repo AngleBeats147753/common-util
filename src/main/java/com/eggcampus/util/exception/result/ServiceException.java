@@ -5,7 +5,7 @@ import com.eggcampus.util.result.ReturnResult;
 import lombok.Getter;
 
 /**
- * 业务异常
+ * 业务层异常
  *
  * @author 黄磊
  * @since 2022/6/24

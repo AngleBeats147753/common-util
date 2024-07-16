@@ -4,6 +4,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
+ * 工具类，用于比较两个Set集合的差异，并跟踪这些差异。
+ *
  * @author 黄磊
  */
 public class SetUtil {
